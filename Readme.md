@@ -2,6 +2,14 @@
 
 Tested: Working Video 720p, 1080p & Sound
 
+Fixes:
+
+SDRAM disabled, this core doesn't use it.
+
+Clocks reversed for Einstein 256 to work properly.
+
+assign HDMI_MCLK = 1'b0;    // It fixes some audio issues.
+
 Tatung Einstein for MiSTer FPGA
 ===============================
 
