@@ -44,28 +44,28 @@ module sys_top
 	input         HDMI_TX_INT,
 
 	//////////// SDR ///////////
-	output [12:0] SDRAM_A,
-	inout  [15:0] SDRAM_DQ,
-	output        SDRAM_DQML,
-	output        SDRAM_DQMH,
-	output        SDRAM_nWE,
-	output        SDRAM_nCAS,
-	output        SDRAM_nRAS,
-	output        SDRAM_nCS,
-	output  [1:0] SDRAM_BA,
-	output        SDRAM_CLK,
+	//output [12:0] SDRAM_A,
+	//inout  [15:0] SDRAM_DQ,
+	//output        SDRAM_DQML,
+	//output        SDRAM_DQMH,
+	//output        SDRAM_nWE,
+	//output        SDRAM_nCAS,
+	//output        SDRAM_nRAS,
+	//output        SDRAM_nCS,
+	//output  [1:0] SDRAM_BA,
+	//output        SDRAM_CLK,
 	//output        SDRAM_CKE,
 
 `ifdef MISTER_DUAL_SDRAM
 	////////// SDR #2 //////////
-	output [12:0] SDRAM2_A,
-	inout  [15:0] SDRAM2_DQ,
-	output        SDRAM2_nWE,
-	output        SDRAM2_nCAS,
-	output        SDRAM2_nRAS,
-	output        SDRAM2_nCS,
-	output  [1:0] SDRAM2_BA,
-	output        SDRAM2_CLK,
+	//output [12:0] SDRAM2_A,
+	//inout  [15:0] SDRAM2_DQ,
+	//output        SDRAM2_nWE,
+	//output        SDRAM2_nCAS,
+	//output        SDRAM2_nRAS,
+	//output        SDRAM2_nCS,
+	//output  [1:0] SDRAM2_BA,
+	//output        SDRAM2_CLK,
 
 `else
 	//////////// VGA ///////////
@@ -124,7 +124,7 @@ module sys_top
 	//inout   [6:0] USER_IO
 );
 
-//////////////////////// Senhor: Initializations ////////////////////////
+///////////////////////// Senhor: Initializations ////////////////////////
 
 wire [5:0] VGA_R;
 wire [5:0] VGA_G;
@@ -132,10 +132,6 @@ wire [5:0] VGA_B;
 wire VGA_HS;
 wire VGA_VS = 1'b1;
 wire VGA_EN = 1'b1;
-
-assign VGA_R = 6'b000000;
-assign VGA_G = 6'b000000;
-assign VGA_B = 6'b000000;
 
 wire [3:0] SDIO_DAT;
 wire SDIO_CMD = 1'b1;
@@ -219,12 +215,12 @@ always @(posedge FPGA_CLK2_50) begin
 	div <= div + 1'b1;
 	if(div > 100000) div <= 0;
 
- if(!div) begin
-		deb_user <= {deb_user[6:0], btn_u | ~KEY[0]};  //MiSTer: ~KEY[1] Senhor: Buttons are switched for convenience.
+	if(!div) begin
+		deb_user <= {deb_user[6:0], btn_u | ~KEY[1]};
 		if(&deb_user) btn_user <= 1;
 		if(!deb_user) btn_user <= 0;
 
-		deb_osd <= {deb_osd[6:0], btn_o | ~KEY[1]}; //MiSTer: ~KEY[0] Senhor: Buttons are switched for convenience.
+		deb_osd <= {deb_osd[6:0], btn_o | ~KEY[0]};
 		if(&deb_osd) btn_osd <= 1;
 		if(!deb_osd) btn_osd <= 0;
 	end
@@ -1372,6 +1368,7 @@ assign SDCD_SPDIF =(SW[3] & ~spdif) ? 1'b0 : 1'bZ;
 	assign AUDIO_R     = SW[3] ? 1'bZ : SW[0] ? HDMI_I2S   : analog_r;
 	assign AUDIO_L     = SW[3] ? 1'bZ : SW[0] ? HDMI_SCLK  : analog_l;
 `endif
+
 
 assign HDMI_MCLK = 1'b0;
 wire clk_audio;
