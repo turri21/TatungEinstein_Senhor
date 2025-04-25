@@ -2,9 +2,11 @@
 
 Tested: Working Video 720p, 1080p & Sound
 
-Fixes:
+Dev notes:
 
 Clocks reversed for Einstein 256 to work properly.
+
+assign HDMI_MCLK = 1'b1;
 
 ___
 Tatung Einstein for MiSTer FPGA
