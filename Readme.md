@@ -6,7 +6,7 @@ Dev notes:
 
 Clocks reversed for Einstein 256 to work properly.
 
-assign HDMI_MCLK = 1'b1;
+In sys_top.v assign HDMI_MCLK = 1'b1
 
 ___
 Tatung Einstein for MiSTer FPGA
