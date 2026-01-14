@@ -1,3 +1,19 @@
+=(TatungEinstein_Senhor notes)=-
+
+Tested: Working Video 720p, 1080p & Sound.
+
+Dev notes:
+
+Always check the game ESCAPE FROM MERLIN 8 for graphics artifacts before a release.
+
+Disable the signal initalizations in TatungEinstein.sv
+
+Clocks reversed for Einstein 256 to work properly. [Not any more, currently works without]
+
+In sys_top.v assign HDMI_MCLK = 1'b1 [Not any more, currently works without]
+
+___
+
 Tatung Einstein for MiSTer FPGA
 ===============================
 
@@ -28,4 +44,5 @@ Games, Software and information
 
 - http://www.tatungeinstein.co.uk/
 - http://tatungeinstein.hopto.org/8-bit/Tatung%20Einstein/
+
 
